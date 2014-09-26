@@ -32,28 +32,22 @@
 {   //
     //create a URL with the string you're given
     //load that URL
-    [self.myURLTextField resignFirstResponder];
     //NSURL *url = [NSURL URLWithString:text];
     //NSURL *text = [NSURL URLWithString:@""];
     //[NSURL URLWithString:text];
-    NSString *text = self.myURLTextField.text;
+
+//NSString *nText = self.myURLTextField.text;
+//    NSLog(@"You typed %@", );
+
+    //So this code ultimately allows the user to enter a URL w/o having to type http:// it's not a good
+    //solution but it works for my purposes
+    NSString *text = @"http://";
+    NSString *finalString = [text stringByAppendingString:self.myURLTextField.text];
     NSLog(@"You typed %@", self.myURLTextField.text);
-    if ([text hasPrefix:@"http://"]){
-        NSLog(@"You typed %@", text);
-        NSURL *url = [NSURL URLWithString:text];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-        [self.myWebView loadRequest:urlRequest];
-    }
-    else if (![text hasPrefix:@"http://"]){
-        [text stringByAppendingString:@"https://"];
-        NSURL *url = [NSURL URLWithString:text];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-        [self.myWebView loadRequest:urlRequest];
-    }//else {
-//        NSURL *url = [NSURL URLWithString:text];
-//        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-//        [self.myWebView loadRequest:urlRequest];
-//    }
+    NSURL *url = [NSURL URLWithString:finalString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.myWebView loadRequest:urlRequest];
+    [self.myURLTextField resignFirstResponder];
     return 0;
 }
 
