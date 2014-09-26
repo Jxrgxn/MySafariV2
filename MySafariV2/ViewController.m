@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *myWebView;
 @property (weak, nonatomic) IBOutlet UITextField *myURLTextField;
 @property (weak, nonatomic) IBOutlet UIButton *onBackButtonPressed;
@@ -63,6 +63,10 @@
 }
 - (IBAction)onReloadButtonPressed:(id)sender {
     [self.myWebView reload];
+}
+- (IBAction)onFeatureButtonPressed:(id)sender {
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"Coming Soon!" delegate:self cancelButtonTitle:@"Exit" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
